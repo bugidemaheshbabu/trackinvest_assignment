@@ -1,0 +1,373 @@
+{
+   "swagger": "2.0",
+   "info": {
+      "description": "This is a sample Employee-Management System server done as a hiring assignment for TrackInvest.",
+      "version": "1.0.0",
+      "title": "TrackInvest Assignment",
+      "contact": {
+         "email": "mahesh@gmail.com"
+      },
+   },
+   "host": "localhost:3000",
+   "basePath": "/api",
+   "tags": [
+      {
+         "name": "Employee",
+         "description": "Everything about your employees"
+      },
+      {
+         "name": "Department",
+         "description": "Everything about your departments"
+      },
+      {
+        "name": "Operations",
+        "description": "Perform the operations in the system"
+      }
+   ],
+   "schemes": [
+      "https",
+      "http"
+   ],
+   "paths": {
+      "/employees/create": {
+       "post": {
+           "tags": ["Employee"],
+           "summary": "Add an employee details to the database",
+           "description": "",
+           "operationId": "createEmployee",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "body",
+               "name": "emp_details",
+               "description": "Enter the employee details",
+               "required": true,
+               "schema": {
+                 "$ref": "#/definitions/Employee"
+               }
+             }
+            ],
+            "responses": {
+              "201": {
+                "description": "Successfully created the employee with the given details"
+              }
+            }
+       }
+      },
+      "/employees/{id}/update": {
+       "put": {
+           "tags": ["Employee"],
+           "summary": "Update an employee details in the database",
+           "description": "",
+           "operationId": "updateEmployee",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "path",
+               "name": "id",
+               "description": "Enter the employee id",
+               "required": true,
+               "type": "string",
+               "format": "uuid",
+             },
+             {
+               "in": "body",
+               "name": "emp_details",
+               "description": "Enter the employee details",
+               "required": true,
+               "schema": {
+                 "$ref": "#/definitions/Employee"
+               }
+             }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully updated the employee with the given details"
+              },
+              "404": {
+                "description": "Employee not found"
+              }
+            }
+       }
+      },
+      "/employees": {
+       "get": {
+           "tags": ["Employee"],
+           "summary": "Get all the employees",
+           "description": "",
+           "operationId": "getEmployees",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [],
+            "responses": {
+              "200": {
+                "description": "Successfully fetched the employees data",
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Employee"
+                  }
+                }
+              }
+            }
+       }
+      },
+      "/employees/{id}/delete": {
+       "delete": {
+           "tags": ["Employee"],
+           "summary": "Delete an employee in the database",
+           "description": "",
+           "operationId": "deleteEmployee",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "path",
+               "name": "id",
+               "description": "Enter the employee id",
+               "required": true,
+               "type": "string",
+               "format": "uuid",
+             }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully deleted employee with the given details"
+              },
+              "404": {
+                "description": "Employee not found"
+              }
+            }
+       }
+      },
+      "/departments/create": {
+       "post": {
+           "tags": ["Department"],
+           "summary": "Add a department to the database",
+           "description": "",
+           "operationId": "createDepartment",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "body",
+               "name": "emp_details",
+               "description": "Enter the employee details",
+               "required": true,
+               "schema": {
+                 "$ref": "#/definitions/Department"
+               }
+             }
+            ],
+            "responses": {
+              "201": {
+                "description": "Successfully created the department with the given details"
+              }
+            }
+       }
+      },
+      "/departments": {
+       "get": {
+           "tags": ["Department"],
+           "summary": "Get all the departments",
+           "description": "",
+           "operationId": "getDepartments",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [],
+            "responses": {
+              "200": {
+                "description": "Successfully fetched the departments data",
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Department"
+                  }
+                }
+              }
+            }
+       }
+      },
+      "/departments/{id}/update": {
+       "put": {
+           "tags": ["Department"],
+           "summary": "Update an employee details in the database",
+           "description": "",
+           "operationId": "updateDepartment",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "path",
+               "name": "id",
+               "description": "Enter the department id",
+               "required": true,
+               "type": "string",
+               "format": "uuid",
+             },
+             {
+               "in": "body",
+               "name": "emp_details",
+               "description": "Enter the department details",
+               "required": true,
+               "schema": {
+                 "$ref": "#/definitions/Department"
+               }
+             }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully updated the department with the given details"
+              },
+              "404": {
+                "description": "Department not found"
+              }
+            }
+       }
+      },
+      "/departments/{id}/delete": {
+       "delete": {
+           "tags": ["Department"],
+           "summary": "Delete an employee in the database",
+           "description": "",
+           "operationId": "deleteDepartment",
+           "consumes": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+          "produces": [
+             "application/json",
+             "applicaiton/xml"
+           ],
+           "parameters": [
+             {
+               "in": "path",
+               "name": "id",
+               "description": "Enter the department id",
+               "required": true,
+               "type": "string",
+               "format": "uuid",
+             }
+            ],
+            "responses": {
+              "200": {
+                "description": "Successfully deleted department with the given details"
+              },
+              "404": {
+                "description": "Department not found"
+              }
+            }
+       }
+      }
+   },
+   "securityDefinitions": {
+      "petstore_auth": {
+         "type": "oauth2",
+         "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+         "flow": "implicit",
+         "scopes": {
+            "write:pets": "modify pets in your account",
+            "read:pets": "read your pets"
+         }
+      },
+      "api_key": {
+         "type": "apiKey",
+         "name": "api_key",
+         "in": "header"
+      }
+   },
+   "definitions": {
+      "Department": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "cc8b7641-a8dc-49d7-8d60-2e1a4ef9fa8a"
+          },
+          "name": {
+            "type": "string",
+            "example": "Techincal"
+          },
+          "created_on": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2021-06-04"
+          },
+        }
+      },
+      "Employee": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "cc8b7641-a8dc-49d7-8d60-2e1a4ef9fa8a"
+          },
+          "name": {
+            "type": "string",
+            "example": "Mahesh"
+          },
+          "email": {
+            "type": "string",
+            "example": "mahesh@gmail.com"
+          },
+          "joined_on": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2021-06-04"
+          },
+          "department_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "cc8b7641-a8dc-49d7-8d60-2e1a4ef9fa8a"
+          }
+        },
+        "required": ["id", "name", "email"]
+      }
+   }
+}
