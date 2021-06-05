@@ -1,15 +1,25 @@
-const express = require("express");
+const express = require('express')
+const bodyParser = require('body-parser')
+const db = require('./db')
+const app = express()
+const port = 3000
 
-// starting the server on port 3000
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
-// express app
-const app = express();
-
-// listen for requests
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
+})
 
 
-app.get('/employees', (req, res) => {
-    console.log(req.body, req.path);
-    res.send("all employees");
-});
+app.get('/', (req, res) => {
+    // res.json({ info: 'Node.js, Express, and Postgres API' });
+    res.send("/testing")
+})
+
+app.get('/employees', db.getEmployees)
+app.get('/employees/:id', db.getEmployeeById)
