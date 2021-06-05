@@ -10,5 +10,6 @@ app.listen(3000);
 
 
 app.get('/employees', (req, res) => {
+    console.log(req.body, req.path);
     res.send("all employees");
-})
+});
